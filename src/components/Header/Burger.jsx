@@ -97,6 +97,9 @@ const List = styled.div`
   @media screen and (max-width: 420px) {
     .myList {
       width: 100%;
+      background: #f2f2f2;
+      z-index: 4;
+      opacity: 1;
     }
     li a {
       font-size: 15px;
