@@ -10,6 +10,7 @@ const BurgerBtn = styled.div`
   position: absolute;
   cursor: pointer;
   right: 30px;
+  z-index: 5;
 
   span {
     display: inline-block;
@@ -43,22 +44,25 @@ const BurgerBtn = styled.div`
   }
 `;
 
-const List = styled.ul`
-  display: block;
-  position: fixed;
-  text-transform: capitalize;
-  list-style: none;
-  left: 0px;
-  top: 0px;
-  width: 35%;
-  height: 100%;
-  border-right: #ccc 1px solid;
-  background: #f2f2f2;
-  z-index: 3;
-  opacity: 0.7;
-  padding: 10px;
-  transition: 0.3s ease-in-out;
-  transform: ${({ open }) => (open ? "translateX(0px)" : "translateX(-700px)")};
+const List = styled.div`
+  .myList {
+    display: block;
+    position: fixed;
+    text-transform: capitalize;
+    list-style: none;
+    left: 0px;
+    top: 0px;
+    width: 35%;
+    height: 100%;
+    border-right: #ccc 1px solid;
+    background: #f2f2f2;
+    z-index: 4;
+    opacity: 0.7;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+    transform: ${({ open }) =>
+      open ? "translateX(0px)" : "translateX(-700px)"};
+  }
 
   li a {
     text-decoration: none;
@@ -90,7 +94,10 @@ const List = styled.ul`
       font-size: 17px;
     }
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 420px) {
+    .myList {
+      width: 100%;
+    }
     li a {
       font-size: 15px;
     }
@@ -104,26 +111,28 @@ export default function Burger() {
   return (
     <>
       <List open={open}>
-        <li>
-          <Link to="/main" onClick={closeMenu}>
-            <span>Home</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/main/shop" onClick={closeMenu}>
-            <span> Shop</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/main/story" onClick={closeMenu}>
-            <span>Story</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/main/login" onClick={closeMenu}>
-            <span>Login/Register</span>
-          </Link>
-        </li>
+        <div className="myList">
+          <li>
+            <Link to="/main" onClick={closeMenu}>
+              <span>Home</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/main/shop" onClick={closeMenu}>
+              <span> Shop</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/main/story" onClick={closeMenu}>
+              <span>Story</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/main/login" onClick={closeMenu}>
+              <span>Login/Register</span>
+            </Link>
+          </li>
+        </div>
       </List>
       <BurgerBtn open={open} onClick={() => setOpen(!open)}>
         <span></span>
