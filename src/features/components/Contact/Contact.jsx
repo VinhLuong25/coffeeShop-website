@@ -31,7 +31,11 @@ export default class Contact extends React.Component {
   render() {
     const { name, email, message } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="contact-container">
+      <form
+        onSubmit={this.handleSubmit}
+        className="contact-container"
+        data-netlify="true"
+      >
         <h1>contact us</h1>
         <p className="field">
           <input
@@ -60,6 +64,7 @@ export default class Contact extends React.Component {
             onChange={this.handleChange}
           />
         </p>
+        <div data-netlify-recaptcha="true"></div>
         <p>
           <button type="submit">Send</button>
         </p>
