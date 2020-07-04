@@ -1,0 +1,73 @@
+.detail-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+.des-container {
+  padding: 0 20px;
+}
+.title-detail {
+  font-size: 40px;
+  font-weight: bold;
+}
+.price-detail {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+.img-detail {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+}
+.backToShop {
+  border: 0;
+  background: transparent;
+  margin-top: 30px;
+
+  text-transform: capitalize;
+  font-size: 15px;
+  font-weight: 550;
+
+  cursor: pointer;
+}
+.backToShop::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #c1fff8;
+  transition: all 0.3s;
+}
+.backToShop:hover::after {
+  width: 100%;
+}
+.backToShop:hover {
+  transform: scale(1.05);
+}
+
+.addToCart {
+  padding: 8px;
+  margin-bottom: 15px;
+
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: #dbecea;
+  cursor: pointer;
+
+  font-size: 20px;
+  font-weight: 550;
+  text-transform: capitalize;
+
+  opacity: 0.8;
+  transition: all 0.3s linear;
+}
+.addToCart:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 2px 2px 2px 0 rgb(0, 0, 0, 0.2);
+}

@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
+import "./App.css";
+import Header from "./components/Header/Header";
+import Coffee from "./features";
+import Footer from "./components/Footer/Footer";
+import NotFound from "./components/NotFound";
+import PopUp from "./features/pages/ShopPage/PopUp/PopUp";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <div className="page-content">
+          <Header />
+          <div className="page-wrap">
+            <Switch>
+              <Redirect exact from="/" to="/main" />
+              <Route path="/main" component={Coffee} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+          <Footer />
+          <PopUp />
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 

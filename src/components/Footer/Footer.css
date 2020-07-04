@@ -1,0 +1,94 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+  padding: 8px;
+  background-color: #dbecea;
+}
+
+.footer-contact {
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer-contact div p {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #293231;
+}
+.social-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: auto 15px;
+}
+.social-icon a i {
+  color: #293231;
+  font-size: 33px;
+}
+.cafes {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.cafes a {
+  text-decoration: none;
+  padding: 5px;
+  color: #293231;
+}
+hr {
+  margin: auto;
+  width: 90%;
+  color: #719691;
+}
+.copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  color: #293231;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 550px) {
+  .social-icon a i {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  .footer-contact div p {
+    font-size: 15px;
+  }
+  .cafes a,
+  Link {
+    font-size: 14px;
+  }
+  .copyright {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .social-icon {
+    flex-direction: column;
+  }
+  .social-icon a i {
+    font-size: 17px;
+    padding-bottom: 3px;
+  }
+  .footer-contact div p {
+    font-size: 13px;
+  }
+  .cafes a,
+  Link {
+    font-size: 13px;
+  }
+  .copyright {
+    font-size: 11px;
+  }
+}

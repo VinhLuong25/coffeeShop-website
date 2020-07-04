@@ -1,0 +1,46 @@
+.popUp-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUp-section {
+  background-color: seashell;
+  text-align: center;
+  padding: 20px;
+}
+.popUp-price {
+  margin: 8px;
+}
+.popUp-img {
+  width: 350px;
+  height: 350px;
+}
+button {
+  display: inline-block;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background: #dbecea;
+  cursor: pointer;
+
+  font-size: 18px;
+  font-weight: 550;
+  text-transform: capitalize;
+
+  opacity: 0.8;
+  transition: all 0.3s linear;
+}
+button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 2px 2px 2px 0 rgb(0, 0, 0, 0.2);
+}
