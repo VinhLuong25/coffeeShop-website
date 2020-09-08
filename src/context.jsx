@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { storeProducts, detailProduct } from "./data.js";
-
+import axios from "axios";
 export const ProductContext = createContext();
 
 function ProductProvider(props) {
@@ -15,6 +15,10 @@ function ProductProvider(props) {
   const [myCategory, setMyCategory] = useState("All");
   const [sortedProduct, setSortedProduct] = useState([]);
   const [sort, setSort] = useState("featured");
+  const [userData, setUserData] = useState({
+    token: null,
+    user: null,
+  });
 
   useEffect(() => getStoreProduct(), []);
   useEffect(() => addSubTotal());
@@ -43,6 +47,34 @@ function ProductProvider(props) {
     }
     setSortedProduct(tempProduct);
   }, [myCategory, myType, sort]);
+
+  //authorize user
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token");
+      if (token === null) {
+        localStorage.setItem("auth-token", "");
+        token = "";
+      }
+      const tokenRes = await axios.post(
+        "http://localhost:4000/auth/tokenIsValid",
+        null,
+        { headers: { "x-auth-token": token } }
+      );
+      if (tokenRes.data) {
+        let userRes = await axios.get("http://localhost:4000/auth", {
+          headers: { "x-auth-token": token },
+        });
+        console.log(userRes.data);
+
+        setUserData({
+          token: token,
+          user: userRes.data,
+        });
+      }
+    };
+    checkLoggedIn();
+  }, []);
 
   const getStoreProduct = () => {
     let tempProduct = [...storeProducts];
@@ -180,6 +212,8 @@ function ProductProvider(props) {
         handleCategory: handleCategory,
         sort: sort,
         handleSort: handleSort,
+        userData,
+        setUserData,
       }}
     >
       {props.children}

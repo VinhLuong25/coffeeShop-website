@@ -8,6 +8,7 @@ import Policy from "./pages/PolicyPage/Policy";
 import NotFound from "../components/NotFound";
 import Cart from "./pages/CartPage/Cart";
 import Detail from "./pages/DetailPage/Detail";
+import Register from "./pages/RegisterPage/Register";
 function Coffee() {
   const match = useRouteMatch();
 
@@ -17,6 +18,7 @@ function Coffee() {
       <Route path={`${match.url}/shop`} component={Shop} />
       <Route exact path={`${match.url}/story`} component={Story} />
       <Route exact path={`${match.url}/login`} component={Login} />
+      <Route exact path={`${match.url}/register`} component={Register} />
       <Route exact path={`${match.url}/policy`} component={Policy} />
       <Route exact path={`${match.url}/cart`} component={Cart} />
       <Route exact path={`${match.url}/details`} component={Detail} />

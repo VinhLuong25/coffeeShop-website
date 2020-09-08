@@ -11,3 +11,70 @@
 .page-wrap {
   padding-bottom: 200px;
 }
+
+/* register form */
+.register-container {
+  width: 40%;
+  margin: 0px auto;
+  padding: 30px 0;
+}
+.register-container h2 {
+  text-align: center;
+}
+.form-contain {
+  margin: 30px auto;
+}
+.form-contain label,
+.form-contain input {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+}
+.form-contain label {
+  margin-top: 20px;
+  font-weight: 550;
+}
+.form-contain input {
+  height: 40px;
+  margin-top: 10px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#btn {
+  background-color: black;
+  color: white;
+  width: 40%;
+  margin: 30px auto;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgb(228, 162, 162);
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.error span {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 550;
+}
+.deleteErrField {
+  background-color: rgb(230, 111, 111);
+  padding: 2px 2px;
+  cursor: pointer;
+}
+.deleteErrField:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 1000px) {
+  .register-container {
+    width: 60%;
+  }
+}

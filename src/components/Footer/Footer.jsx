@@ -44,8 +44,8 @@ export default function Footer() {
 
         <hr />
         <div className="copyright">
-          <p>COPYRIGHT &copy; 2020 ORIGOCOFFEE.</p>
-          <p>ALL RIGHTS RESERVED ORIGO COFFEE SHOP.</p>
+          <p>COPYRIGHT &copy; 2020 COFFEE.</p>
+          <p>ALL RIGHTS RESERVED COFFEE SHOP.</p>
         </div>
       </footer>
     </div>

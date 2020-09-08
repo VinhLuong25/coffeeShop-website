@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../../context";
 
 const BurgerBtn = styled.div`
   margin-left: auto;
@@ -46,7 +48,7 @@ const BurgerBtn = styled.div`
 
 const List = styled.div`
   .myList {
-    display: block;
+    /* display: block; */
     position: fixed;
     text-transform: capitalize;
     list-style: none;
@@ -64,7 +66,9 @@ const List = styled.div`
       open ? "translateX(0px)" : "translateX(-700px)"};
   }
 
-  li a {
+  li a,
+  li span {
+    display: inline-block;
     text-decoration: none;
     padding-right: 60px;
     color: black;
@@ -73,12 +77,13 @@ const List = styled.div`
     font-size: 25px;
     font-weight: bold;
   }
+
   li {
     display: flex;
     position: relative;
     justify-content: flex-start;
     align-items: center;
-    text-align: center;
+    text-align: left;
     left: 50%;
     top: 10%;
     transform: translateX(-50%);
@@ -108,6 +113,15 @@ const List = styled.div`
 `;
 export default function Burger() {
   const [open, setOpen] = useState(false);
+  const { userData, setUserData } = useContext(ProductContext);
+  const logOut = () => {
+    setUserData({
+      token: null,
+      user: null,
+    });
+    localStorage.setItem("auth-token", "");
+    setOpen(false);
+  };
   const closeMenu = () => {
     setOpen(false);
   };
@@ -131,9 +145,18 @@ export default function Burger() {
             </Link>
           </li>
           <li>
-            <Link to="/main/login" onClick={closeMenu}>
-              <span>Login/Register</span>
-            </Link>
+            {userData.user ? (
+              <span onClick={logOut}>Log Out</span>
+            ) : (
+              <span>
+                <Link to="/main/login" onClick={closeMenu}>
+                  <span>Login</span>
+                </Link>
+                <Link to="/main/register" onClick={closeMenu}>
+                  <span>Register</span>
+                </Link>
+              </span>
+            )}
           </li>
         </div>
       </List>

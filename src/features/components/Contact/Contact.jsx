@@ -1,41 +1,37 @@
 import React from "react";
+import axios from "axios";
 
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
 export default class Contact extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", email: "", message: "" };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { name: "", email: "", comment: "" };
   }
 
-  /* Here’s the juicy bit for posting the form submission */
-
   handleSubmit = (e) => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...this.state }),
-    })
-      .then(() => alert("Success!"))
-      .catch((error) => alert(error));
-
     e.preventDefault();
-    this.setState({ name: "", email: "", message: "" });
+    const info = {
+      name: this.state.name,
+      email: this.state.email,
+      comment: this.state.comment,
+    };
+    console.log(JSON.stringify(info));
+
+    axios
+      .post("http://localhost:4000/contact/add", info)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.response.request._response));
+
+    this.setState({ name: "", email: "", comment: "" });
   };
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, message } = this.state;
+    const { name, email, comment } = this.state;
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="contact-container"
-        data-netlify="true"
-      >
+      <form onSubmit={this.handleSubmit} className="contact-container">
         <h1>contact us</h1>
         <p className="field">
           <input
@@ -57,14 +53,13 @@ export default class Contact extends React.Component {
         </p>
         <p className="field">
           <textarea
-            name="message"
+            name="comment"
             placeholder="Comment"
             rows="7"
-            value={message}
+            value={comment}
             onChange={this.handleChange}
           />
         </p>
-        <div data-netlify-recaptcha="true"></div>
         <p>
           <button type="submit">Send</button>
         </p>

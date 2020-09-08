@@ -17,22 +17,13 @@ const Nav = styled.div`
     z-index: 3;
     overflow: hidden;
   }
-  img {
-    margin-left: 60px;
-    width: 100%;
-    height: 8vh;
+  .logo {
+    text-decoration: none;
   }
-  @media screen and (max-width: 1100px) {
-    img {
-      margin-left: 30px;
-      width: 100%;
-      height: 8vh;
-    }
-  }
-  @media screen and (max-width: 400px) {
-    img {
-      margin-left: 0px;
-    }
+  .logo h1 {
+    margin-left: 20px;
+    font-size: 20px;
+    color: black;
   }
 `;
 
@@ -76,11 +67,8 @@ function Header() {
       <Nav>
         <div className="header-container">
           <div>
-            <Link to="/main">
-              <img
-                src="https://cdn.shopify.com/s/files/1/1043/3912/t/2/assets/logo-retina.png?v=5094134739105111384"
-                alt=""
-              />
+            <Link to="/main" className="logo">
+              <h1>LOGOS</h1>
             </Link>
           </div>
           <Burger />
